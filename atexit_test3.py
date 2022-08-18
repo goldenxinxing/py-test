@@ -24,7 +24,7 @@ def worker(main: int, i: int) -> bool:
         atexit.register(f.final)
         return True
     finally:
-        # 必须得这么加，否则不行
+        # 必须得这么加，否则不行(进程池模式下，不能直接使用atexit的run_exitfunc，因为只会在第一次执行)
         print("exit")
         # atexit._run_exitfuncs()
 
